@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student's profile</title>
+	<head>
+	<style type="text/css">
+		.message-content {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 21px; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer,
+  .header {
+    background: #5c9d3d;
+    color: white;
+    padding: 1.25rem 0; 
+    text-align: center;
+  }
+ 
+  .header {
+    margin-bottom: 30px;
+  }
+  .footer { 
+    margin-top: 30px;
+  }
+
+  .headerTable {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .headerTable > div:first-child{
+      width: 100%; 
+      text-align: center;
+  }
+
+  .headerTable > div:last-child{
+      width: 9.375rem;
+      margin-left: 20px;
+  }
+
+
+  .contentTable > div{
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .contentTable > div span:first-child {
+    width: 100%;
+    text-align: right;
+  }
+
+  .contentTable > div span:last-child {
+    width: 9.375rem;
+    margin-left: 20px;
+  }
+
+  .custom { 
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 5px;
+  }
+
+  .paymentContent {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .paymentContent > div:first-child{
+    width: 100%;
+    display: flex;
+  }
+
+  .paymentContent > div:first-child img {
+    margin-right: 20px;
+  }
+
+  .paymentContent > div:last-child{
+    width: 9.375rem;
+    margin-left: 20px;
+  }
+	</style>
+	<meta charset="utf-8">
+</head>
+<body>
+	
+<div> 
+	<div class="message-content header"> 
+	  <p>
+		<strong>SEU DIAGNÓSTICO DE SOLO COM O ALOSIX</strong>
+	  </p>
+	</div>
+	<div class="message-content">       
+	  <p><strong>Recibo do ALOSIX </strong> - Pedido {{idOrder}}</p>
+	  <p>Obrigado por utilizar nossos serviços, {{name}}.</p>
+	  <p>
+		Esperamos que vocë tenha gostado. 
+	  </p>
+		
+	  <div> 
+		<div class="headerTable"> 
+		  <div>
+			<span><strong>TOTAL PAGO</strong></span>
+		  </div>
+		  <div> 
+			<span><strong>{{total}}</strong></span>
+		  </div>
+		</div>
+		<div class="contentTable">
+			<div>
+				<span>Preço total</span>
+				<span>{{total}}</span>
+			</div> 
+			<div>
+				<span>Desconto</span>
+				<span>{{discount}}</span>
+			</div> 
+			<div>
+				<span>Custo fixo</span>
+				<span>{{netTotal}}</span>
+			</div> 
+		</div>
+  
+  
+		<div class="custom"> 
+			<span><strong>Pagamento</strong></span>
+		</div>
+		<div class="paymentContent">
+			<div> 
+			  <img src="https://www.bcb.gov.br/content/estabilidadefinanceira/piximg/logo_pix.png" width="100px" height="auto"/>
+			  <span>Pix</span>
+			</div> 
+			<div>{{netTotal}}</div>
+		</div>
+  
+		<div class="custom"> 
+			<span><strong> Baixar PDF</strong></span> 
+		</div>
+	  </div>
+  
+	  <p><strong>ALOSIX -  Cuide da qualidade do seu solo</strong></p>
+	</div>
+  </div>
+</body>
+</html>

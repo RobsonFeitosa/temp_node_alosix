@@ -1,0 +1,73 @@
+image: node:16.18.1
+pipelines:
+  branches: 
+    dev:
+      - step:
+         name: Build Test Environment
+         caches:
+           - node
+         script:
+           - apt-get update  
+           - rm -rf /node_modules && yarn install 
+           - yarn build
+         artifacts:
+            - dist/**
+         deployment: test 
+      - step:
+          caches:
+            - node
+          script: 
+            - pipe: atlassian/rsync-deploy:0.8.1
+              variables:
+                  USER: 'ubuntu'
+                  SERVER: $SERVER_DEV
+                  REMOTE_PATH: '/home/ubuntu/app/node-api/dist/'
+                  LOCAL_PATH: 'dist/*'  
+                  DEBUG: 'true'
+                  SSH_ARGS: '-o StrictHostKeyChecking=no'
+                  EXTRA_ARGS: "--exclude=.bitbucket/ --exclude=.git/ --exclude=bitbucket-pipelines.yml --exclude=.gitignore" 
+      - step:
+          caches:
+            - node
+          script: 
+            - pipe: atlassian/ssh-run:0.4.1
+              variables:
+                  SSH_USER: 'ubuntu' 
+                  SERVER: $SERVER_DEV
+                  MODE: 'command'
+                  COMMAND: 'pm2 restart all' 
+    master:
+      - step:
+         name: Build Production Environment
+         caches:
+           - node
+         script:
+           - apt-get update  
+           - rm -rf /node_modules && yarn install 
+           - yarn build
+         artifacts:
+            - dist/**
+         deployment: production
+      - step:
+          caches:
+            - node
+          script: 
+            - pipe: atlassian/rsync-deploy:0.8.1
+              variables:
+                  USER: 'ubuntu'
+                  SERVER: ec2-54-84-146-204.compute-1.amazonaws.com
+                  REMOTE_PATH: '/home/ubuntu/app/node-api/dist/'
+                  LOCAL_PATH: 'dist/*'  
+                  DEBUG: 'true'
+                  SSH_ARGS: '-o StrictHostKeyChecking=no'
+                  EXTRA_ARGS: "--exclude=.bitbucket/ --exclude=.git/ --exclude=bitbucket-pipelines.yml --exclude=.gitignore" 
+      - step:
+          caches:
+            - node
+          script: 
+            - pipe: atlassian/ssh-run:0.4.1
+              variables:
+                  SSH_USER: 'ubuntu' 
+                  SERVER: ec2-54-84-146-204.compute-1.amazonaws.com
+                  MODE: 'command'
+                  COMMAND: 'echo $(pwd) && pm2 -v && pm2 restart all'

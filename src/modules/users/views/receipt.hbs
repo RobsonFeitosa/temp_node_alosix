@@ -1,0 +1,78 @@
+<style> 
+   
+  
+ 
+</style>
+<div> 
+  <div 
+    style="font-family: Arial, Helvetica, sans-serif;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 21px; 
+      margin-left: auto;
+      margin-right: auto;
+      background: #5c9d3d;
+      color: white;
+      padding: 1.25rem 0; 
+      text-align: center;
+      margin-bottom: 30px;
+      "> 
+    <p>
+      <strong>SEU DIAGNÓSTICO DE SOLO COM O ALOSIX</strong>
+    </p>
+  </div>
+  <div style="font-family: Arial, Helvetica, sans-serif;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 21px; 
+      margin-left: auto;
+      margin-right: auto;">       
+    <p><strong>Recibo do ALOSIX </strong> - Pedido {{idOrder}}</p>
+    <p>Obrigado por utilizar nossos serviços, {{name}}.</p>
+    <p>
+      Esperamos que vocë tenha gostado. 
+    </p>
+      
+    <div> 
+      <div style=" border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            padding: 5px;"> 
+        <div style="width: 100%; text-align: center;">
+          <span><strong>TOTAL PAGO</strong></span>
+        </div>
+        <div style="width: 9.375rem; margin-left: 20px;"> 
+          <span><strong>{{total}}</strong></span>
+        </div>
+      </div>
+      <div class="contentTable">
+          <div style="padding: 5px; display: flex; justify-content: flex-end;">
+              <span style="width: 100%; text-align: right;">Preço total</span>
+              <span style="width: 9.375rem;margin-left: 20px;">{{total}}</span>
+          </div> 
+          <div style="padding: 5px; display: flex; justify-content: flex-end;">
+              <span style="width: 100%; text-align: right;">Desconto</span>
+              <span style="width: 9.375rem;margin-left: 20px;">{{discount}}</span>
+          </div> 
+          <div style="padding: 5px; display: flex; justify-content: flex-end;">
+              <span style="width: 100%; text-align: right;">Custo fixo</span>
+              <span style="width: 9.375rem;margin-left: 20px;">{{netTotal}}</span>
+          </div> 
+      </div>
+
+
+      <div style="border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 5px;"> 
+          <span><strong>Pagamento</strong></span>
+      </div>
+      <div style="display: flex; justify-content: center; padding: 5px;">
+          <div style="width: 100%; display: flex;"> 
+            <img src="https://www.bcb.gov.br/content/estabilidadefinanceira/piximg/logo_pix.png" style="margin-right: 20px;" width="100px" height="auto"/> 
+          </div> 
+          <div style="width: 9.375rem; margin-left: 20px;">{{netTotal}}</div>
+      </div> 
+    </div>
+
+    <p><strong>ALOSIX -  Cuide da qualidade do seu solo</strong></p>
+  </div>
+</div>
